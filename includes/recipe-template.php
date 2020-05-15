@@ -6,4 +6,6 @@
     <li>Nível: DIFFICULTY_PH</li>
     <li>Tipo: TYPE_PH</li>
 </ul>
+<div id="recipe_vote" class="rateit" data-rateit-resetable="false" data-id="RECIPE_ID_PH">
+</div>
 <h3>Preparo</h3>

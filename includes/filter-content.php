@@ -24,6 +24,7 @@
     $recipe_html = str_replace('UTENSILS_PH', $recipe_data['utensils'], $recipe_html);
     $recipe_html = str_replace('DIFFICULTY_PH', $recipe_data['difficulty'], $recipe_html);
     $recipe_html = str_replace('TYPE_PH', $recipe_data['type'], $recipe_html);
+    $recipe_html = str_replace('RECIPE_ID_PH', $post->ID, $recipe_html);
 
     return $recipe_html.$content;
  }
