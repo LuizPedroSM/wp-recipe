@@ -18,9 +18,11 @@ if (!function_exists('add_action')) {
 // Includes
 include('includes/activate.php');
 include('includes/init.php');
+include('includes/admin/admin_init.php');
 
 // Hooks
 register_activation_hook(__FILE__, 'lr_activate_plugin');
 add_action('init', 'lr_recipes_init');
+add_action('admin_init', 'lr_recipes_admin_init');
 
 // Shortcodes
