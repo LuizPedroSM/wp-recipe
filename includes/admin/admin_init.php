@@ -20,3 +20,20 @@ function lr_recipes_metaboxes()
         'high' // high, default, low
     );
 }
+
+function lr_save_post_admin($post_id, $post, $update)
+{
+    if (!$update) {
+        return;
+    }
+
+    $recipe_data = array(
+        'ingredients' => $_POST['lr_ingredients'],
+        'time' => $_POST['lr_time'],
+        'utensils' => $_POST['lr_utensils'],
+        'difficulty' => $_POST['lr_difficulty'],
+        'type' => $_POST['lr_type'],
+    );
+
+    update_post_meta($post_id, 'recipe_data', $recipe_data);
+}

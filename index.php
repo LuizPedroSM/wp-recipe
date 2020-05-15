@@ -25,5 +25,6 @@ include('includes/admin/admin_init.php');
 register_activation_hook(RECIPE_PLUGIN_URL, 'lr_activate_plugin');
 add_action('init', 'lr_recipes_init');
 add_action('admin_init', 'lr_recipes_admin_init');
+add_action('save_post_recipe', 'lr_save_post_admin', 10, 3);
 
 // Shortcodes
