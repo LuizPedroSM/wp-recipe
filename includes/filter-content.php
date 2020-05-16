@@ -7,7 +7,6 @@
     global $post;
     $recipe_html = file_get_contents('recipe-template.php', true);
     $recipe_data = get_post_meta($post->ID, 'recipe_data', true);
-    print_r($recipe_data);
 
     switch ($recipe_data['difficulty']) {
         case '0':

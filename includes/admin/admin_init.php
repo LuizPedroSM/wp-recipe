@@ -2,11 +2,15 @@
 
 include 'metabox_lr_recipe_option.php';
 include 'enqueue.php';
+include 'columns.php';
 
 function lr_recipes_admin_init()
 {
     add_action('add_meta_boxes_recipe', 'lr_recipes_metaboxes');
     add_action('admin_enqueue_scripts', 'lr_admin_enqueue');
+
+    add_filter('manage_recipe_posts_columns', 'lr_recipe_columns');
+    add_action('manage_recipe_posts_custom_column', 'lr_manage_recipe_columns', 10 , 2);
 }
 
 function lr_recipes_metaboxes()
