@@ -27,6 +27,7 @@ include(dirname(RECIPE_PLUGIN_URL).'/includes/widgets.php');
 include('includes/widgets/daily_recipe.php');
 include('includes/cron.php');
 include('includes/deactivate.php');
+include('includes/shortcodes/recipes-creator.php');
 
 // Hooks
 register_activation_hook(RECIPE_PLUGIN_URL, 'lr_activate_plugin');
@@ -42,3 +43,4 @@ add_filter('widgets_init', 'lr_widgets_init');
 add_filter('lr_recipe_daily_hook', 'lr_generate_daily_recipe');
 
 // Shortcodes
+add_shortcode('recipe_creator', 'lr_recipe_creator_shortcode');
