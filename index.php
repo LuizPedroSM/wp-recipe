@@ -28,6 +28,7 @@ include('includes/widgets/daily_recipe.php');
 include('includes/cron.php');
 include('includes/deactivate.php');
 include('includes/shortcodes/recipes-creator.php');
+include('includes/recipe-submit.php');
 
 // Hooks
 register_activation_hook(RECIPE_PLUGIN_URL, 'lr_activate_plugin');
@@ -37,10 +38,15 @@ add_action('admin_init', 'lr_recipes_admin_init');
 add_action('save_post_recipe', 'lr_save_post_admin', 10, 3);
 add_filter('the_content', 'lr_filter_recipe_content');
 add_filter('wp_enqueue_scripts', 'lr_enqueue_scripts', 100);
-add_filter('wp_ajax_lr_vote_recipe', 'lr_vote_recipe');
-add_filter('wp_ajax_nopriv_lr_vote_recipe', 'lr_vote_recipe');
 add_filter('widgets_init', 'lr_widgets_init');
 add_filter('lr_recipe_daily_hook', 'lr_generate_daily_recipe');
+
+// Ajax
+add_filter('wp_ajax_lr_vote_recipe', 'lr_vote_recipe');
+add_filter('wp_ajax_nopriv_lr_vote_recipe', 'lr_vote_recipe');
+
+add_filter('wp_ajax_lr_recipes_submit', 'lr_recipes_submit');
+add_filter('wp_ajax_nopriv_lr_recipes_submit', 'lr_recipes_submit');
 
 // Shortcodes
 add_shortcode('recipe_creator', 'lr_recipe_creator_shortcode');

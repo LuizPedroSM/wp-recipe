@@ -1,4 +1,4 @@
-<form action="" method="post">
+<form id="recipes_creator" method="post">
     <label for="lr_title">Titulo: </label> <br />
     <input type="text" name="lr_title" id="lr_title" /> <br />
 
@@ -24,5 +24,6 @@
     <label for="lr_type">Tipo: </label> <br />
     <input type="text" name="lr_type" id="lr_type"><br />
     <br />
-    <input type="submit" value="Salvar">
+    <input type="submit" value="Salvar" id="recipes_creator_submit">
 </form>
+<div id="recipe_criator_notification"></div>
