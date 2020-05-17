@@ -23,7 +23,8 @@ include('includes/admin/admin_init.php');
 include('includes/filter-content.php');
 include('includes/enqueue.php');
 include('includes/recipe-vote.php');
-
+include(dirname(RECIPE_PLUGIN_URL).'/includes/widgets.php');
+include('includes/widgets/daily_recipe.php');
 
 // Hooks
 register_activation_hook(RECIPE_PLUGIN_URL, 'lr_activate_plugin');
@@ -34,5 +35,6 @@ add_filter('the_content', 'lr_filter_recipe_content');
 add_filter('wp_enqueue_scripts', 'lr_enqueue_scripts', 100);
 add_filter('wp_ajax_lr_vote_recipe', 'lr_vote_recipe');
 add_filter('wp_ajax_nopriv_lr_vote_recipe', 'lr_vote_recipe');
+add_filter('widgets_init', 'lr_widgets_init');
 
 // Shortcodes
