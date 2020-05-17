@@ -18,4 +18,7 @@ function lr_activate_plugin()
 
     require_once(ABSPATH.'/wp-admin/includes/upgrade.php');
     dbDelta($sql);
+
+    // hourly, daily, twicedaily
+    wp_schedule_event(time(), 'daily', 'lr_recipe_daily_hook');
 }

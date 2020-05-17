@@ -40,6 +40,24 @@ class Lr_Recipe_Of_The_Day_Widget extends WP_Widget
 
     public function widget($args, $instance)
     {
-        
+        extract($args);
+        extract($instance);
+
+        $title = apply_filters('widget_title', $title);
+
+        echo $before_widget;
+        echo $before_title;
+        echo $title;
+        echo $after_title;
+
+        $recipe_id = get_transient('lr_recipe_daily');
+?>
+<a href="<?php echo get_the_permalink($recipe_id);?>">
+    <?php echo get_the_post_thumbnail($recipe_id);?> <br />
+    <?php echo get_the_title($recipe_id);?>
+</a>
+<?php
+
+        echo $after_widget;
     }
 }
