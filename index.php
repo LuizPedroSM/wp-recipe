@@ -31,6 +31,7 @@ include('includes/shortcodes/recipes-creator.php');
 include('includes/recipe-submit.php');
 include('includes/shortcodes/recipe-auth.php');
 include('includes/recipe-signup.php');
+include('includes/recipe-signin.php');
 
 // Hooks
 register_activation_hook(RECIPE_PLUGIN_URL, 'lr_activate_plugin');
@@ -51,6 +52,7 @@ add_filter('wp_ajax_lr_recipes_submit', 'lr_recipes_submit');
 add_filter('wp_ajax_nopriv_lr_recipes_submit', 'lr_recipes_submit');
 
 add_filter('wp_ajax_nopriv_lr_recipes_signup', 'lr_recipes_signup');
+add_filter('wp_ajax_nopriv_lr_recipes_signin', 'lr_recipes_signin');
 
 // Shortcodes
 add_shortcode('recipe_creator', 'lr_recipe_creator_shortcode');

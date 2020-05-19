@@ -12,7 +12,7 @@
             <input type="submit" value="Entrar" id="lr_signin_submit">
         </form>
     </div>
-    <div class="lr_recipe_loginitem">
+    <div class="lr_recipe_loginitem SHOW_SIGNUP_FORM_PH">
         <h4>Cadastro</h4>
         <div class="lr_signup_notification"></div>
         <form id="lr_recipe_signup" method="post">

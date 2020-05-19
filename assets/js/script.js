@@ -1,4 +1,5 @@
 jQuery(function () {
+  // Send Vote
   jQuery("#recipe_vote").bind("rated", function () {
     jQuery(this).rateit("readonly", true);
 
@@ -13,6 +14,7 @@ jQuery(function () {
     });
   });
 
+  // Send Recipe
   jQuery("#recipes_creator").on("submit", function (e) {
     e.preventDefault();
     jQuery("#recipes_creator_submit").hide();
@@ -77,6 +79,37 @@ jQuery(function () {
             "Não foi possível. Tente novamente mais tarde."
           );
           jQuery("#lr_signup_submit").show();
+        }
+      }
+    });
+  });
+
+  // Sign in
+  jQuery("#lr_recipe_signin").on("submit", function (e) {
+    e.preventDefault();
+    jQuery("#lr_signin_submit").hide();
+    jQuery("#lr_signin_notification").html("Carregando");
+
+    let form = {
+      action: "lr_recipes_signin",
+      email: jQuery("#lr_signin_email").val(),
+      password: jQuery("#lr_signin_password").val()
+    };
+
+    jQuery.ajax({
+      type: "POST",
+      url: recipe_obj.ajax_url,
+      data: form,
+      dataType: "json",
+      success: function (json) {
+        if (json.status == 2) {
+          jQuery("#lr_signin_notification").html("Logado com sucesso");
+          window.location.href = recipe_obj.home_url;
+        } else {
+          jQuery("#lr_signin_notification").html(
+            "Não foi possível logar na conta."
+          );
+          jQuery("#lr_signin_submit").show();
         }
       }
     });
