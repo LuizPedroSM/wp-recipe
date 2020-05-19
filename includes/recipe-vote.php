@@ -39,6 +39,11 @@ function lr_vote_recipe()
 
     update_post_meta($post_id, 'recipe_data', $recipe_data);
 
+    do_action('recipe_vote', array(
+        'post_id' => $post_id,
+        'vote' => $vote
+    ));
+
     $array['status'] = 1;
 
     wp_send_json($array);
