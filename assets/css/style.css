@@ -1,4 +1,8 @@
-#lr_recipe_option {
-  background-color: #eee;
-  border-radius: 5px;
+.lr_recipe_loginarea {
+  display: flex;
+}
+
+.lr_recipe_loginitem {
+  flex: 1;
+  padding: 10px;
 }

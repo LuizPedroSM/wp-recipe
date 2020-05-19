@@ -10,10 +10,10 @@ function lr_admin_enqueue()
 
     // Registers
     wp_register_style(
-        'lr_style',
-        plugins_url('/assets/css/style.css', RECIPE_PLUGIN_URL)
+        'lr_style_admin',
+        plugins_url('/assets/css/admin.css', RECIPE_PLUGIN_URL)
     );
     
     // Uses
-    wp_enqueue_style('lr_style');
+    wp_enqueue_style('lr_style_admin');
 }   
