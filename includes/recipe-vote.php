@@ -12,9 +12,8 @@ function lr_vote_recipe()
     $vote = floatval($_POST['vote']);
     $ip = $_SERVER['REMOTE_ADDR'];
 
-    $qt = $wpdb->get_var(
-        "SELECT COUNT(*) FROM ".$wpdb->prefix."recipes_votes WHERE recipe_id = ".$post_id." AND user_ip = '".$ip."' "
-    );
+    $sql = $wpdb->prepare("SELECT COUNT(*) FROM ".$wpdb->prefix."recipes_votes WHERE recipe_id = %d AND user_ip = %s", $post_id, $ip);
+    $qt = $wpdb->get_var($sql);
 
     if ($qt > 0) {
         wp_send_json($array);
@@ -30,12 +29,11 @@ function lr_vote_recipe()
     );
 
     $recipe_data = get_post_meta($post_id, 'recipe_data', true);
-    $recipe_data['count'] = $wpdb->get_var(
-        "SELECT COUNT(*) FROM ".$wpdb->prefix."recipes_votes WHERE recipe_id = ".$post_id.""
-    );
-    $recipe_data['avg'] = $wpdb->get_var(
-        "SELECT AVG(vote) FROM ".$wpdb->prefix."recipes_votes WHERE recipe_id = ".$post_id.""
-    );
+    $sql = $wpdb->prepare("SELECT COUNT(*) FROM ".$wpdb->prefix."recipes_votes WHERE recipe_id = %d", $post_id);
+    $recipe_data['count'] = $wpdb->get_var($sql);
+    
+    $sql = $wpdb->prepare("SELECT AVG(vote) FROM ".$wpdb->prefix."recipes_votes WHERE recipe_id = %d", $post_id);
+    $recipe_data['avg'] = $wpdb->get_var($sql);   
 
     update_post_meta($post_id, 'recipe_data', $recipe_data);
 
