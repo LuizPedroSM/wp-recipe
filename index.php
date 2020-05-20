@@ -32,6 +32,7 @@ include('includes/recipe-submit.php');
 include('includes/shortcodes/recipe-auth.php');
 include('includes/recipe-signup.php');
 include('includes/recipe-signin.php');
+include('includes/admin/dashboard-widgets.php');
 
 // Hooks
 register_activation_hook(RECIPE_PLUGIN_URL, 'lr_activate_plugin');
@@ -43,6 +44,7 @@ add_filter('the_content', 'lr_filter_recipe_content');
 add_filter('wp_enqueue_scripts', 'lr_enqueue_scripts', 100);
 add_filter('widgets_init', 'lr_widgets_init');
 add_filter('lr_recipe_daily_hook', 'lr_generate_daily_recipe');
+add_filter('wp_dashboard_setup', 'lr_add_dashboard_widgets');
 
 // Ajax
 add_filter('wp_ajax_lr_vote_recipe', 'lr_vote_recipe');
