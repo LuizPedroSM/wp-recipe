@@ -6,6 +6,9 @@ function lr_activate_plugin()
         wp_die(__('Você precisa atualizar o WordPress para usar este plugin', 'recipes'));
     }
 
+    lr_recipes_init();
+    flush_rewrite_rules();
+
     global $wpdb;
 
     $sql = "CREATE TABLE ".$wpdb->prefix."recipes_votes(

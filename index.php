@@ -17,8 +17,8 @@ if (!function_exists('add_action')) {
 define('RECIPE_PLUGIN_URL', __FILE__);
 
 // Includes
-include('includes/activate.php');
 include('includes/init.php');
+include('includes/activate.php');
 include('includes/admin/admin_init.php');
 include('includes/filter-content.php');
 include('includes/enqueue.php');
