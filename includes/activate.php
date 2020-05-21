@@ -24,4 +24,17 @@ function lr_activate_plugin()
 
     // hourly, daily, twicedaily
     wp_schedule_event(time(), 'daily', 'lr_recipe_daily_hook');
+
+    // Options API
+    $recipes_opts = get_option('lr_recipe_opts');
+
+    if (!$recipes_opts) {
+        // 1 must be loged, 2 anyone
+        $opts = array(
+            'vote_login' => 1, 
+            'recipe_login' => 1
+        );
+
+        add_option('lr_recipe_opts', $opts);
+    }
 }
