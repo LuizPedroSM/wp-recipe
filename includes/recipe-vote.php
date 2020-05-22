@@ -4,10 +4,15 @@ function lr_vote_recipe()
 {
     global $wpdb;
 
-    $array  =array(
+    $array  = array(
         'status' => 0
     );
 
+    $recipe_opts = get_option('lr_recipe_opts');
+    if (!is_user_logged_in() && $recipe_opts['vote_login'] == 1) {
+        wp_send_json($array);exit;
+    }
+    
     $post_id = absint($_POST['id']);
     $vote = floatval($_POST['vote']);
     $ip = $_SERVER['REMOTE_ADDR'];

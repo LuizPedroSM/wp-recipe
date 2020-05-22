@@ -7,6 +7,7 @@
     <li>Tipo: TYPE_PH</li>
     <li>Nota: SCORE_PH (QT_PH votos)</li>
 </ul>
-<div id="recipe_vote" class="rateit" data-rateit-resetable="false" data-id="RECIPE_ID_PH">
+<div id="recipe_vote" class="rateit" data-rateit-readonly="RECIPE_READONLY_PH" data-rateit-resetable="false"
+    data-id="RECIPE_ID_PH">
 </div>
 <h3>Preparo</h3>

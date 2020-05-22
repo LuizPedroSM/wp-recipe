@@ -4,6 +4,11 @@ function lr_recipes_submit()
 {
     $array = array('status' => 1);
 
+    $recipe_opts = get_option('lr_recipe_opts');
+    if (!is_user_logged_in() && $recipe_opts['recipe_login'] == 1) {
+        wp_send_json($array);exit;
+    }
+
     if (
         empty($_POST['title']) || 
         empty($_POST['content']) ||

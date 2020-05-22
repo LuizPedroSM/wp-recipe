@@ -2,6 +2,11 @@
 
 function lr_recipe_creator_shortcode()
 {
+    $recipe_opts = get_option('lr_recipe_opts');
+    if (!is_user_logged_in() && $recipe_opts['recipe_login'] == 1) {
+        return 'Você precisa estar logado';
+    }
+
     $creatorHTML = wp_remote_get(
         plugins_url('includes/shortcodes/recipes-creator-template.php', RECIPE_PLUGIN_URL)
     );

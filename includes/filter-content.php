@@ -25,6 +25,13 @@
             $recipe_data['difficulty'] = 'Avançado';
             break;
     }
+
+    $recipe_opts = get_option('lr_recipe_opts');
+    if (!is_user_logged_in() && $recipe_opts['vote_login'] == 1) {
+        $recipe_html = str_replace('RECIPE_READONLY_PH', 'true', $recipe_html);
+    } else {
+        $recipe_html = str_replace('RECIPE_READONLY_PH', 'false', $recipe_html);
+    }
     
     $recipe_html = str_replace('INGREDIENTS_PH', $recipe_data['ingredients'], $recipe_html);
     $recipe_html = str_replace('TIME_PH', $recipe_data['time'], $recipe_html);
