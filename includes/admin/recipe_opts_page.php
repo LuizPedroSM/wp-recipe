@@ -31,6 +31,16 @@ function lr_recipe_opts_page()
         <br /><br />
         <input type="submit" value="Salvar">
     </form>
+
+    <hr />
+
+    <form action="options.php" method="post">
+        <?php 
+        settings_fields('lr_opts_group');
+        do_settings_sections('lr_opts_section');
+        submit_button();
+        ?>
+    </form>
 </div>
 <?php 
 }

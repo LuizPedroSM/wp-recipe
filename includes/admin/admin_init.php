@@ -4,6 +4,7 @@ include 'metabox_lr_recipe_option.php';
 include 'enqueue.php';
 include 'columns.php';
 include 'recipe_opts_page_save.php';
+include 'settings-api.php';
 
 function lr_recipes_admin_init()
 {
@@ -13,6 +14,7 @@ function lr_recipes_admin_init()
 
     add_filter('manage_recipe_posts_columns', 'lr_recipe_columns');
     add_action('manage_recipe_posts_custom_column', 'lr_manage_recipe_columns', 10 , 2);
+    settings_api();
 }
 
 function lr_recipes_metaboxes()
