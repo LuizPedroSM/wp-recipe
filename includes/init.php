@@ -36,4 +36,13 @@ function lr_recipes_init()
     );
 
     register_post_type('recipe', $array);
+
+    register_taxonomy(
+        'origem',
+        'recipe',
+        array(
+            'label' => 'Origem',
+            'rewrite' => array('slug' => 'origem')
+        )
+    );
 }
