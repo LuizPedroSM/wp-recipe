@@ -37,4 +37,17 @@ function lr_activate_plugin()
 
         add_option('lr_recipe_opts', $opts);
     }
+
+    // add new user
+    global $wp_roles;
+
+    add_role(
+        'Receita_autor',
+        'Autor da Receita',
+        array(
+            'read' => true,
+            'upload_files' => true,
+            'edit_posts' => true
+        )
+    );
 }
