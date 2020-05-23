@@ -35,6 +35,8 @@ include('includes/recipe-signin.php');
 include('includes/admin/dashboard-widgets.php');
 include('includes/admin/menus.php');
 include('includes/admin/recipe_opts_page.php');
+include('includes/admin/origem_fields.php');
+include('includes/admin/origem_save.php');
 
 // Hooks
 register_activation_hook(RECIPE_PLUGIN_URL, 'lr_activate_plugin');
@@ -43,11 +45,15 @@ add_action('init', 'lr_recipes_init');
 add_action('admin_init', 'lr_recipes_admin_init');
 add_action('save_post_recipe', 'lr_save_post_admin', 10, 3);
 add_filter('the_content', 'lr_filter_recipe_content');
-add_filter('wp_enqueue_scripts', 'lr_enqueue_scripts', 100);
-add_filter('widgets_init', 'lr_widgets_init');
-add_filter('lr_recipe_daily_hook', 'lr_generate_daily_recipe');
-add_filter('wp_dashboard_setup', 'lr_add_dashboard_widgets');
-add_filter('admin_menu', 'lr_admin_menus');
+add_action('wp_enqueue_scripts', 'lr_enqueue_scripts', 100);
+add_action('widgets_init', 'lr_widgets_init');
+add_action('lr_recipe_daily_hook', 'lr_generate_daily_recipe');
+add_action('wp_dashboard_setup', 'lr_add_dashboard_widgets');
+add_action('admin_menu', 'lr_admin_menus');
+add_action('origem_add_form_fields', 'lr_origem_add_form_fiels');
+add_action('origem_edit_form_fields', 'lr_origem_edit_form_fiels');
+add_action('created_origem', 'lr_save_origem');
+add_action('edited_origem', 'lr_save_origem');
 
 // Ajax
 add_filter('wp_ajax_lr_vote_recipe', 'lr_vote_recipe');
