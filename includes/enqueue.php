@@ -35,6 +35,8 @@ function lr_enqueue_scripts()
     ));
     
     // Uses
+    wp_enqueue_media();
+    
     wp_enqueue_style('lr_style');
     wp_enqueue_style('lr_rateit');
     wp_enqueue_script('lr_rateit');

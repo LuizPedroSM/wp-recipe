@@ -42,6 +42,10 @@ function lr_recipes_submit()
         'post_type' => 'recipe'
     ));
 
+    if (!empty($_POST['anexo_id'])) {
+        include_once(ABSPATH.'/wp-admin/includes/image.php');
+        set_post_thumbnail($post_id, $_POST['anexo_id']);
+    }
     update_post_meta($post_id, 'recipe_data', $recipe_data);
 
     $array['status'] = 2;

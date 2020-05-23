@@ -1,4 +1,23 @@
 jQuery(function () {
+  let mediauploader = wp.media({
+    title: "Selecione ou Envie uma Foto",
+    button: {
+      text: "Usar esta foto"
+    },
+    multiple: false
+  });
+
+  jQuery("#lr_img_upload_btn").on("click", function (e) {
+    e.preventDefault();
+    mediauploader.open();
+  });
+
+  mediauploader.on("select", function () {
+    let anexo = mediauploader.state().get("selection").first().toJSON();
+    jQuery("#lr_img_preview").attr("src", anexo.url);
+    jQuery("#lr_img").val(anexo.id);
+  });
+
   // Send Vote
   jQuery("#recipe_vote").bind("rated", function () {
     jQuery(this).rateit("readonly", true);
@@ -28,7 +47,8 @@ jQuery(function () {
       time: jQuery("#lr_time").val(),
       utensils: jQuery("#lr_utensils").val(),
       difficulty: jQuery("#lr_difficulty").val(),
-      type: jQuery("#lr_type").val()
+      type: jQuery("#lr_type").val(),
+      anexo_id: jQuery("#lr_img").val()
     };
 
     jQuery.ajax({
